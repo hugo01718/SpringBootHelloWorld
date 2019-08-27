@@ -3,6 +3,7 @@ pipeline{
     stages {
         stage('Build App'){
             steps{
+		echo "Build App now......"
                 sh "rm -rf SpringBootHelloWorld"
                 sh "git clone https://github.com/hugo01718/SpringBootHelloWorld.git/"
                 sh "mvn clean -f SpringBootHelloWorld"
@@ -14,7 +15,7 @@ pipeline{
         }
         stage('Deploy DEV'){
             steps{
-                sh "ls"
+                echo "Deploy DEV now......"
 		//oc login -u $username -p $password
 		//oc project dev
 		//oc new-app springboot_dockerimage
@@ -27,7 +28,7 @@ pipeline{
         }
         stage('Deploy UAT'){
             steps{
-                sh "ls"
+                echo "Deploy UAT now......"
 		//oc login -u $username -p $password
 		//oc project qa
 		//oc new-app springboot_dockerimage
