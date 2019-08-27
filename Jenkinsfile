@@ -10,12 +10,14 @@ pipeline{
 		sh "docker build . -t springboot_dockerimage"
 		sh "docker login -u hugo01718 -p 213456789"
 		//sh "docker push springboot_dockerimage"
-		//sh "mvn install dockerfile:build"
             }
         }
         stage('Deploy DEV'){
             steps{
                 sh "ls"
+		//oc login -u $username -p $password
+		//oc project dev
+		//oc new-app springboot_dockerimage
             }
         }
         stage('Promote to UAT'){
@@ -26,6 +28,9 @@ pipeline{
         stage('Deploy UAT'){
             steps{
                 sh "ls"
+		//oc login -u $username -p $password
+		//oc project qa
+		//oc new-app springboot_dockerimage
             }
         }
     }   
